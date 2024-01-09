@@ -18,15 +18,29 @@ public class QuestionService {
 
         public Question saveQuestion(Question question) {
             return questionRepository.save(question);
-        }
+        }//user add questions from frontend
 
         public List<Question> getAllQuestion() {
             return questionRepository.findAll();
+        }//get all the questions
+        public Optional<Question> getQuestionById(long id){
+            return questionRepository.findById(id);
+        }//get question by id
+
+    public void saveQuestionsFromJson(String json) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            // Deserialize the JSON array into a list of Question objects
+            List<Question> questions = objectMapper.readValue(json, new TypeReference<List<Question>>() {});
+
+            // Save the list of questions to the database
+            questionRepository.saveAll(questions);
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle the exception appropriately
         }
-        public Optional<Question> getOneQuestion(){
-            System.out.print(questionRepository.findById(1L));
-            return questionRepository.findById(1L);
-        }
+    }//insert all the questions parsed from trivia api response.
+
     public void saveQuestionFromJson(String json) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -40,19 +54,11 @@ public class QuestionService {
             e.printStackTrace(); // Handle the exception appropriately
         }
     }
-    public void saveQuestionsFromJson(String json) {
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
 
-            // Deserialize the JSON array into a list of Question objects
-            List<Question> questions = objectMapper.readValue(json, new TypeReference<List<Question>>() {});
 
-            // Save the list of questions to the database
-            questionRepository.saveAll(questions);
-        } catch (Exception e) {
-            e.printStackTrace(); // Handle the exception appropriately
-        }
-    }
+
+
+
     public void printTableContent() {
         List<Question> questions = questionRepository.findAll();
 
