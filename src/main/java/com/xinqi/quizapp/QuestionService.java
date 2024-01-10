@@ -55,6 +55,13 @@ public class QuestionService {
         }
     }
 
+    public List<Question> getQuestionsByCategory(String category){
+        return questionRepository.findByCategory(category);
+    }
+
+    public List<Question> findQuestionsByCategoryAndDifficulty(String category, String difficulty){
+        return questionRepository.findByCategoryAndDifficulty(category,difficulty);
+    }
 
 
 
