@@ -12,14 +12,14 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class Cron {
 
-    private final String backendUrl = "http://localhost:8080/api/Question/questions?category=General%20Knowledge&difficulty=easy";
+    private final String backendUrl = "https://quiz-backend-r9pj.onrender.com/api/Question/questions?category=General%20Knowledge&difficulty=easy";
 
     @PostConstruct
     public void init() {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
         // Schedule the task to run every 12 minutes
-        scheduler.scheduleAtFixedRate(this::restartServer, 0, 12, TimeUnit.MINUTES);
+        scheduler.scheduleAtFixedRate(this::restartServer, 0, 2, TimeUnit.MINUTES);
     }
 
     private void restartServer() {
