@@ -17,9 +17,9 @@ WORKDIR /app
 COPY --from=build /app/target/quizapp-0.0.1-SNAPSHOT.jar /app/quizapp.jar
 
 # Set environment variables
-ENV database_url=jdbc:postgresql://dpg-cmarlci1hbls73cnvev0-a.oregon-postgres.render.com/quiz_jplu
-ENV database_username=xinqi
-ENV database_password=wMRirYCTYdwTjsSPWT2CGTh9I27gY7yE
+ENV RENDER_DATABASE_URL=jdbc:postgresql://dpg-cmarlci1hbls73cnvev0-a.oregon-postgres.render.com/quiz_jplu
+ENV RENDER_DATABASE_USERNAME=xinqi
+ENV RENDER_DATABASE_PASSWORD=wMRirYCTYdwTjsSPWT2CGTh9I27gY7yE
 
 EXPOSE 8080
 
