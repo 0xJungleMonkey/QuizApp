@@ -32,10 +32,10 @@ ENV database_username=xinqi
 ENV database_password=wMRirYCTYdwTjsSPWT2CGTh9I27gY7yE
 
 # Copy the built JAR file from the previous stage to the container
-COPY ./target/quizapp-0.0.1-SNAPSHOT.jar .
+COPY target/quizapp-0.0.1-SNAPSHOT.jar /app/quizapp.jar
 EXPOSE 8080
 # Set the command to run the application
-CMD ["java", "-jar", "quizapp-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/app/quizapp.jar"]
 
 
 
