@@ -19,7 +19,7 @@ public class Cron {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
         // Schedule the task to run every 12 minutes
-        scheduler.scheduleAtFixedRate(this::restartServer, 0, 2, TimeUnit.MINUTES);
+        scheduler.scheduleAtFixedRate(this::restartServer, 0, 10, TimeUnit.MINUTES);
     }
 
     private void restartServer() {
